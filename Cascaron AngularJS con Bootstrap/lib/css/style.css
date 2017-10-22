@@ -1,0 +1,24 @@
+/* DECLARAR ESTILOS */
+.miImg{
+	width: 150px;
+	height: 150px;
+	max-height: 150px;
+	max-width: 150px;
+}
+
+.miBody{
+	margin-top: 50px;
+}
+
+.miEstado{
+	color: red;
+}
+
+.textoTarjeta{
+	text-align: center;
+	margin-top: 47px;
+}
+
+.imagenTarjeta{
+	margin-left: 47px;
+}

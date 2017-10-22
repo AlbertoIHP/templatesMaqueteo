@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tarea1">
+<head>
+	<meta charset="UTF-8">
+	<title>Tarea 1</title>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/popper.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/action.js"></script>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body ng-controller="nombreControlador" class="miBody">
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<!-- Button trigger modal -->
+			<button style="width: 100%" type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarPersonaje">
+			  Agregar un nuevo Personaje
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="jumbotron" ng-repeat="user in users">
+		<div class="row">
+			<div class="col-6">  
+				<img src="{{user.imagen}}" class="rounded-circle miImg imagenTarjeta">
+			</div>
+
+			<div class="col-6 textoTarjeta">
+				<div class="row">
+					<div class="col-12" >
+						<h4>{{user.nombre+' '+user.apellido}}</h4>
+					</div>
+				</div>
+				<div class="row">
+					<div ng-if="user.vivo" class="col-12">
+						<h6 class="miEstado">Vivo</h6>
+					</div>
+					<div ng-if="!user.vivo" class="col-12">
+						<h6 class="miEstado">Muerto</h6>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="agregarPersonaje" tabindex="-1" role="dialog" aria-labelledby="tituloModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+
+	<div class="modal-content">
+	  <div class="modal-header">
+		<h5 class="modal-title" id="tituloModal">Ingrese la informacion</h5>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	  </div>
+
+	<form ng-submit="agregarUsuario()">
+		  <div class="modal-body">
+			
+				<div class="form-group" >
+					<label for="nombre">Nombre</label>
+					<input required ng-model="nuevoUsuario.nombre" type="text" class="form-control" id="nombre" placeholder="Ingrese un nombre porfavor">
+				</div>
+
+				<div class="form-group">
+					<label for="apellido">Apellido</label>
+					<input required ng-model="nuevoUsuario.apellido" type="text" class="form-control" id="apellido" placeholder="Ingrese el apellido">
+				</div>
+
+				<div class="form-group">
+					<label for="imagen">Imagen</label>
+					<input required ng-model="nuevoUsuario.imagen" type="text" class="form-control" id="imagen" placeholder="Ingrese la URL de la imagen">
+				</div>
+
+				<div class="form-group">
+					<label>Estado</label>
+					<select style="width: 100%;" required ng-model="nuevoUsuario.vivo" class="custom-select">
+					  <option value="true">Vivo</option>
+					  <option value="false">Muerto</option>
+					</select>
+				</div>
+			
+		  </div>
+
+		  <div class="modal-footer">
+			<button type="submit" class="btn btn-primary">Agregar</button>
+		  </div>
+	  </form>
+
+	</div>
+  </div>
+</div>
+
+</body>
+</html>
